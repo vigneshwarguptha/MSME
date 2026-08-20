@@ -1,2 +1,0 @@
-# No third-party packages are required for the free Render demo.
-# The app uses Python's standard library and SQLite.
