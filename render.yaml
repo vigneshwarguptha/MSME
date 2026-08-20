@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: msme-workforce-planner
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python easy_local.py
+    healthCheckPath: /login
+    envVars:
+      - key: PRODUCTION
+        value: "1"
+      - key: SESSION_TIMEOUT_MINUTES
+        value: "30"

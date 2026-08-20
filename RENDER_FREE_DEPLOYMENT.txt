@@ -1,0 +1,50 @@
+FREE RENDER DEPLOYMENT - MSME WORKFORCE PLANNER
+
+This package is configured for Render's FREE Web Service tier.
+
+IMPORTANT DATA LIMITATION
+-------------------------
+This zero-cost version uses SQLite because it needs no paid database and no extra packages.
+Render Free Web Services have an ephemeral filesystem. The SQLite data can disappear whenever
+the service spins down, restarts, or redeploys. Therefore use this FREE edition for college demos,
+project reviews, UI testing, and temporary sample data only. Do not use real employee/family data.
+
+FILES ALREADY PREPARED
+----------------------
+render.yaml          Render Blueprint configuration
+requirements.txt     Empty/minimal dependency file
+.python-version      Pins Python 3.13
+.gitignore           Prevents local database and secrets from being uploaded
+
+GITHUB
+------
+1. Extract this ZIP.
+2. Create a GitHub repository, for example: msme-workforce-planner
+3. Upload the CONTENTS of this folder to the repository root.
+4. Make sure easy_local.py and render.yaml are visible at the repository root.
+
+RENDER
+------
+Option A - Blueprint:
+1. Sign in to Render.
+2. New -> Blueprint.
+3. Connect the GitHub repository.
+4. Render reads render.yaml.
+5. Confirm the FREE plan and deploy.
+
+Option B - Web Service manually:
+Runtime: Python
+Plan: Free
+Build Command: pip install -r requirements.txt
+Start Command: python easy_local.py
+Health Check: /login
+Environment variables:
+  PRODUCTION=1
+  SESSION_TIMEOUT_MINUTES=30
+
+After deployment Render provides an HTTPS address ending in .onrender.com.
+
+LOCAL USE
+---------
+Windows local mode still works: double-click run_easy_windows.bat.
+Local SQLite data stays in msme.db on your own computer unless you delete it.
